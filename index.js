@@ -1,23 +1,28 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 const mainRouter = require("./route/mainRoute");
 const registerRouter = require("./route/registerRoute");
+const loginRouter = require("./route/loginRoute");
 const app = express();
 require("dotenv").config();
 
+//app middlewares
 app.set("view engine", "ejs");
-
+//för att kunna parsa/konvertera json data till js
 app.use(express.json());
-// app.use(bodyParser.urlencoded({ extended: false }));
-//app.use(express.urlencoded({​​extended: false}​​))
 
-//mongoose.set("useFindAndModify", false);
+//för att kunna parsa/konvertera ejs data till js
+app.use(express.urlencoded({extended: false}))
 
 app.use(bodyParser.json())
 
+app.use(cookieParser())
+
 app.use(mainRouter);
 app.use(registerRouter);
+app.use(loginRouter);
 
 
 const options = {
