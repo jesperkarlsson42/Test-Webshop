@@ -5,12 +5,12 @@ const cookieParser = require("cookie-parser");
 const mainRouter = require("./route/mainRoute");
 const registerRouter = require("./route/registerRoute");
 const loginRouter = require("./route/loginRoute");
+const resetRouter = require("./route/resetRoute");
 const app = express();
 require("dotenv").config();
 
-//app middlewares
 app.set("view engine", "ejs");
-//för att kunna parsa/konvertera json data till js
+
 app.use(express.json());
 
 //för att kunna parsa/konvertera ejs data till js
@@ -23,7 +23,9 @@ app.use(cookieParser())
 app.use(mainRouter);
 app.use(registerRouter);
 app.use(loginRouter);
+app.use(resetRouter);
 
+mongoose.set("useFindAndModify", false);
 
 const options = {
   useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true,

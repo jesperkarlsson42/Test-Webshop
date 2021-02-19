@@ -1,6 +1,6 @@
 const homeRender = (req, res) => {
 
-    res.render("home.ejs", {err:" "})
+    res.render("home.ejs")
 
 }
 

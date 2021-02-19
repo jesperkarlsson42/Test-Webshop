@@ -1,6 +1,7 @@
 const express = require("express");
 const registerRouter = express.Router();
-const User = require("../model/user");
+
+const verifyToken = require("../middleware/verifyUser")
 
 const {registerRender, registerSubmit} = require("../controller/registerController");
 
