@@ -1,21 +1,20 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const app = express();
 const bodyParser = require("body-parser");
-const router = require("./route/mainRoute");
+const mainRouter = require("./route/mainRoute");
+const app = express();
 require("dotenv").config();
-
-app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-
-mongoose.set("useFindAndModify", false);
 
 app.set("view engine", "ejs");
 
+app.use(express.json());
+//app.use(bodyParser.urlencoded({ extended: false }));
+
+mongoose.set("useFindAndModify", false);
+
 app.use(bodyParser.json())
 
-app.use("/", router);
-
+app.use(mainRouter);
 
 
 const options = {
