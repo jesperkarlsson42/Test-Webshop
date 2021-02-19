@@ -1,6 +1,6 @@
-// const User = require("../model/user");
-// const bcrypt = require("bcrypt");
-// const jwt = require("jsonwebtoken");
+const User = require("../model/user");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 const loginRender = (req ,res)=> {
@@ -9,38 +9,38 @@ const loginRender = (req ,res)=> {
 
 }
 
-// const loginSubmit = async (req, res) => {
-//     const {email, password} = req.body;
+const loginSubmit = async (req, res) => {
+    const {email, password} = req.body;
     
-//     const user = await User.findOne({email:email});
+    const user = await User.findOne({email:email});
+
+    if(!user) return res.redirect("/register")
     
-//     if(!user) return res.redirect("/register")
+    const validUser = await bcrypt.compare(password, user.password)
     
-//     //Jämför lösenord bcrypt.compare
-//     const validUser = await bcrypt.compare(password, user.password)
+    console.log(validUser)
     
-//     console.log(validUser)
+    if(!validUser) return res.redirect("/login");
     
-//     if(!validUser) return res.redirect("/login");
+       const jwtToken = await jwt.sign({user:user}, process.env.SECRET_KEY)
     
-//        const jwtToken = await jwt.sign({user:user}, process.env.SECRET_KEY)
+       if(jwtToken) {
     
-//        if(jwtToken) {
+        const cookie = req.cookies.jwtToken
     
-//         const cookie = req.cookies.jwtToken
+           if(!cookie) {
     
-//            if(!cookie) {
-    
-//             res.cookie("jwtToken", jwtToken, {maxAge: 360000000, httpOnly:true})
+            res.cookie("jwtToken", jwtToken, {maxAge: 360000000, httpOnly:true})
                
-//            }
-//            return res.redirect("/")
-//        }
+           }
+           return res.redirect("/")
+       }
        
-//        return res.redirect("/login")
+       return res.redirect("/login")
     
-//     }
+    }
     
     module.exports= {
-        loginRender
+        loginRender,
+        loginSubmit
     }
