@@ -5,9 +5,7 @@ const router = express.Router();
 
 router.get("/addProduct", addProductForm)
 router.post("/addProduct", addProductFormSubmit)
-router.get("/showProducts", showProducts, (req, res) => {
-console.log("dsjkfsdkjb")
-});
+router.get("/showProducts", showProducts);
 router.get("/showShoppingCart", addToShoppingCart);
 router.get("/addToCart/:id", addToShoppingCart);
 
