@@ -6,13 +6,13 @@ const userSchema = new mongoose.Schema({
     password: {type:String, required: true},
     token: String,
     tokenExpiration: Date,
-    productsList: [
+    shoppingCart: [
         {
         type:mongoose.Schema.Types.ObjectId,
         ref: "product"
     }
 ],
-shoppingCartList: [{
+productList: [{
     type:mongoose.Schema.Types.ObjectId,
     ref: "product"
 }]
@@ -25,9 +25,9 @@ userSchema.methods.addToCart = function(productId) {
     this.save();
 }
 
-userSchema.methods.addProductsList = function(productId) {
+userSchema.methods.addProductList = function(productId) {
 
-this.productsList.push(productId);
+this.productList.push(productId);
 this.save();
 }
 

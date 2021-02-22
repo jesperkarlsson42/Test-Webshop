@@ -14,10 +14,10 @@ const addProductFormSubmit = async (req, res) => {
 
     const product = await new Product({name:name, description:description, price:price}).save();
 
-    // const user = await User.findOne({_id:req.user.user._id})
+    const user = await User.findOne({_id:req.user.user._id})
 
-    // user.addProductList(course._id);
-    // console.log(user)
+    user.addProductList(product._id);
+    //console.log(user)
 
     res.redirect("/showProducts")
 }
@@ -25,16 +25,13 @@ const addProductFormSubmit = async (req, res) => {
 const showProducts = async (req, res) =>{
     const products = await Product.find()
  
-     //Course.find()
      res.render("productPage.ejs", {err:" ", products: products})
  }
 
  const addToShoppingCart = async (req, res) => {
 
-    //req.params.id
     const productId = req.params.id
     //vi ska spara course ID in i user collectionen
-    //console.log(req.user.user)
 
     const user = await User.findOne({_id:req.user.user._id})
     //console.log(user)
