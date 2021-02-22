@@ -5,8 +5,8 @@ const verifyUser = require("../middleware/verifyUser")
 
 const {homeRender} = require("../controller/homeController");
 
-//lägga till ("/", verifyUser, homeRender) 
-router.get("/", homeRender)
+router.get("/", verifyUser, homeRender)
+
 
 router.get("/logout", (req, res) => {
 

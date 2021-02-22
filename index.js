@@ -6,6 +6,7 @@ const mainRouter = require("./route/mainRoute");
 const registerRouter = require("./route/registerRoute");
 const loginRouter = require("./route/loginRoute");
 const resetRouter = require("./route/resetRoute");
+const productRouter = require("./route/productRoute");
 const app = express();
 require("dotenv").config();
 
@@ -24,6 +25,7 @@ app.use(mainRouter);
 app.use(registerRouter);
 app.use(loginRouter);
 app.use(resetRouter);
+app.use(productRouter);
 
 mongoose.set("useFindAndModify", false);
 
