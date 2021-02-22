@@ -1,5 +1,5 @@
 const Product = require("../model/product");
-//const User = require("../model/user");
+const User = require("../model/user");
 require("dotenv").config();
 //const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
@@ -14,19 +14,37 @@ const addProductFormSubmit = async (req, res) => {
 
     const product = await new Product({name:name, description:description, price:price}).save();
 
-    //const user = await User.findOne({_id:req.user.user._id})
+    // const user = await User.findOne({_id:req.user.user._id})
 
-    // user.addCourseList(course._id);
+    // user.addProductList(course._id);
     // console.log(user)
 
     res.redirect("/showProducts")
 }
 
-const showProducts = async (req, res) => {
-
+const showProducts = async (req, res) =>{
     const products = await Product.find()
+ 
+     //Course.find()
+     res.render("productPage.ejs", {err:" ", products: products})
+ }
 
-    res.render("productPage.ejs", {products: products, err: " "})
+ const addToShoppingCart = async (req, res) => {
+
+    //req.params.id
+    const productId = req.params.id
+    //vi ska spara course ID in i user collectionen
+    //console.log(req.user.user)
+
+    const user = await User.findOne({_id:req.user.user._id})
+    //console.log(user)
+
+    user.addToCart(productId);
+    //console.log(user);
+
+    const userWithProductData = await User.findOne({_id:req.user.user._id}).populate("shoppingCart");
+    //console.log(userWithCourseData.shoppingCart)
+    res.render("shoppingCart.ejs", {cartItem: userWithProductData.shoppingCart, err: ""})
 }
 
-module.exports = {addProductForm, addProductFormSubmit, showProducts}
+module.exports = {addProductForm, addProductFormSubmit, showProducts, addToShoppingCart}
