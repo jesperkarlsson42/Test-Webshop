@@ -1,0 +1,209 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+header {
+  background-image: url("../images/interior-books.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  font-family: "Roboto", sans-serif;
+  background-position: center center;
+  height: 100vh;
+}
+
+.landingTopSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  width: 65%;
+  height: 300px;
+  background: black;
+  opacity: 0.7;
+  border-radius: 2%;
+  padding: 10px;
+}
+
+@media screen and (min-width: 1024px) {
+  .loginContainer {
+    width: 20%;
+  }
+}
+
+.loginHeading {
+  color: white;
+  padding: 10px;
+}
+
+.loginInput {
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  padding: 5px;
+  font-size: 16px;
+  margin: 10px;
+}
+
+.loginBtnContainer {
+  width: 100%;
+}
+
+.loginBtn {
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 8px;
+  margin: 15px;
+  font-weight: 600;
+}
+
+.loginBtn:hover {
+  opacity: 0.7;
+}
+
+.far {
+  padding: 5px;
+}
+
+.haveAccountSpan {
+  font-weight: 600;
+  padding: 10px;
+  margin: 15px;
+}
+
+.regLinkContainer {
+  width: 100%;
+  margin: 15px;
+}
+
+.bodyHome {
+  background-color: rgb(233, 230, 217);
+}
+
+.homeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url("../images/bedroom.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  background-position: center center;
+  height: 100vh;
+  color: rgb(233, 230, 217);
+}
+
+
+.welcomeText {
+    margin: 15px;
+}
+
+.loginRegHomeContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    width: 35%;
+    height: 100px;
+    background: black;
+    opacity: 0.7;
+    border-radius: 2%;
+    padding: 10px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    .loginRegHomeContainer {
+      width: 15%;
+    }
+  }
+
+.registerLinkContainer,
+.loginLinkContainer {
+  margin: 10px;
+}
+
+.loginLink,
+.registerLink {
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.regLink{
+  padding: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+}
+
+.regLink:hover,
+.loginLink:hover,
+.registerLink:hover {
+  background: rgb(202, 195, 175);
+  border-radius: 5%;
+}
+
+.showProductsContainer {
+    margin: 15px;
+}
+
+.showProductsLink {
+    padding: 15px;
+    text-decoration: none;
+    font-weight: bold;
+    border: solid rgb(233, 230, 217);
+    border-radius: 50%;
+    font-size: 25px;
+    color: rgb(233, 230, 217);
+    background: black;
+    opacity: 0.7;
+  border-radius: 50%;
+}
+
+.showProductsLink:hover {
+  opacity: 0.5;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.menuName {
+  padding: 15px;
+}
+
+.menuLink {
+  text-decoration: none;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: black;
+  padding: 10px;
+}
+
+.menuLink:hover {
+  background: rgb(202, 195, 175);
+  border-radius: 5%;
+}
+
+@media screen and (min-width: 1024px) {
+  .menu {
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px;
+  }
+}

@@ -21,6 +21,8 @@ app.use(bodyParser.json())
 
 app.use(cookieParser())
 
+app.use("/static", express.static("public"));
+
 app.use(mainRouter);
 app.use(registerRouter);
 app.use(loginRouter);
