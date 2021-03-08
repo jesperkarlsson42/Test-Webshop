@@ -29,8 +29,6 @@ app.use(loginRouter);
 app.use(resetRouter);
 app.use(productRouter);
 
-mongoose.set("useFindAndModify", false);
-
 const options = {
   useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true,
 };

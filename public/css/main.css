@@ -20,7 +20,7 @@ header {
   justify-content: center;
 }
 
-.loginContainer {
+.loginContainer, .registerContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,16 +35,32 @@ header {
 
 @media screen and (min-width: 1024px) {
   .loginContainer {
-    width: 20%;
+    width: 60%;
+    margin-top: 5%;
+    border-radius: 1%;
+  }
+  .registerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .bodyRegister, .loginSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
-.loginHeading {
+.loginHeading, .registerHeading {
   color: white;
   padding: 10px;
 }
 
-.loginInput {
+.productHeading {
+  padding: 10px;
+}
+
+.loginInput, .registerInput {
   border: none;
   outline: none;
   border-radius: 25px;
@@ -53,11 +69,7 @@ header {
   margin: 10px;
 }
 
-.loginBtnContainer {
-  width: 100%;
-}
-
-.loginBtn {
+.loginBtn, .registerBtn {
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -66,7 +78,7 @@ header {
   font-weight: 600;
 }
 
-.loginBtn:hover {
+.loginBtn:hover, .registerBtn:hover {
   opacity: 0.7;
 }
 
@@ -85,8 +97,23 @@ header {
   margin: 15px;
 }
 
-.bodyHome {
+.homeSection, .bodyRegister, .bodyProduct {
   background-color: rgb(233, 230, 217);
+  height: 100vh;
+}
+
+.productContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.productDiv {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 20px;
+  width: 20%;
 }
 
 .homeContainer {
@@ -143,7 +170,7 @@ header {
   padding: 10px;
   text-decoration: none;
   font-weight: bold;
-  color: black;
+  color:white;
 }
 
 .regLink:hover,
@@ -173,6 +200,8 @@ header {
 .showProductsLink:hover {
   opacity: 0.5;
 }
+
+
 
 .menu {
   list-style: none;

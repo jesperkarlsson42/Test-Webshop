@@ -1,6 +1,6 @@
 const Product = require("../model/product");
 const User = require("../model/user");
-require("dotenv").config();
+//require("dotenv").config();
 //const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 const addProductForm = (req, res) => {
@@ -17,6 +17,7 @@ const addProductFormSubmit = async (req, res) => {
   }).save();
 
   const user = await User.findOne({ _id: req.user.user._id });
+  console.log(user)
 
   user.addProductList(product._id);
   //console.log(user)
@@ -50,9 +51,20 @@ const addToShoppingCart = async (req, res) => {
   });
 };
 
+const checkout = async (req, res) => {
+  const user = await User.findOne({_id: req.user.user._id}).populate("shoppingCart")
+console.log(user.shoppingCart)
+
+if(!user.shoppingCart || !user.shoppingCart.length === 0)
+return res.redirect("/showProducts")
+res.render("checkout.ejs", {cartItem: user.shoppingCart})
+
+};
+
 module.exports = {
   addProductForm,
   addProductFormSubmit,
   showProducts,
-  addToShoppingCart
+  addToShoppingCart, 
+  checkout
 };
