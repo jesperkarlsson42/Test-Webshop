@@ -6,14 +6,14 @@ const registerRender = (req, res) => {
 };
 
 const registerSubmit = async (req, res) => {
-    const { username, email, password } = req.body;
+    const { name, email, password } = req.body;
     
     try {
     const salt = await bcrypt.genSalt(12);
     const hashedPassword = await bcrypt.hash(password, salt)
 
     new User({
-        username: username,
+        name: name,
         email: email,
         password: hashedPassword
     }).save();

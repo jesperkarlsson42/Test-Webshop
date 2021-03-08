@@ -1,0 +1,20 @@
+<% if (cartItem.length == 0) { %>
+
+    <div> Your shopping cart is empty</div>
+
+<% } %>
+
+<% cartItem.forEach( item => { %>
+
+<div>
+    <%= item.name %> 
+    <%= item.price %>
+    <button> + </button>
+    <button> - </button>
+
+    <span>Total price: </span>
+</div>
+
+================================
+
+<% }) %>
